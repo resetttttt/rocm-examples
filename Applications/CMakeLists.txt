@@ -48,9 +48,9 @@ else()
     add_subdirectory(fdtd)
 endif()
 
-if(NOT (CMAKE_SYSTEM_NAME MATCHES "Windows" AND ROCM_EXAMPLES_HIP_PLATFORM STREQUAL "nvidia"))
-    add_subdirectory(monte_carlo_pi)
-endif()
+#if(NOT (CMAKE_SYSTEM_NAME MATCHES "Windows" AND ROCM_EXAMPLES_HIP_PLATFORM STREQUAL "nvidia"))
+#    add_subdirectory(monte_carlo_pi)
+#endif()
 
 if(NOT glfw3_FOUND)
     message("GLFW not found, not building sobel filter example")

@@ -37,6 +37,17 @@ select_hip_platform()
 
 set(ROCM_ROOT "/opt/rocm" CACHE PATH "Root directory of the ROCm installation")
 
+# Check if target architecture supports FP8 device-side operations
+# FP8 device operations are only supported on gfx94x architectures (MI300 series), gfx1250 (MI450) and gfx1260 (Arcadia)
+set(HIP_LOW_PRECISION_FLOAT_FP8_SUPPORTED_ARCH gfx942 gfx1260 gfx1250)
+
+foreach(ARCH ${CMAKE_HIP_ARCHITECTURES})
+    if(NOT ARCH IN_LIST HIP_LOW_PRECISION_FLOAT_FP8_SUPPORTED_ARCH)
+        message(STATUS "hip_low_precision_float_fp8 does not support architecture: ${ARCH}, not building hip_low_precision_float_fp8 examples")
+        return()
+    endif()
+endforeach()
+
 list(APPEND CMAKE_PREFIX_PATH "${ROCM_ROOT}")
 
 add_executable(${example_name} main.hip)

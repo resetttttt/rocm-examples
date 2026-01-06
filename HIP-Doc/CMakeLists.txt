@@ -36,4 +36,4 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/${folder_bin})
 
 add_subdirectory(Programming-Guide)
 add_subdirectory(Reference)
-add_subdirectory(Tutorials)
+#add_subdirectory(Tutorials)
